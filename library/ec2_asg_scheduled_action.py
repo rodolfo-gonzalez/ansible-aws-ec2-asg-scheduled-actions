@@ -97,7 +97,7 @@ def delete_scheduled_action(client, module):
     try:
         pass
         # return client.delete_scheduled_action(**params)
-    except botocore.exceptions.ClientError as e:
+    except (botocore.exceptions.ClientError) as e:
         module.fail_json(msg=str(e))
 
 
@@ -109,7 +109,7 @@ def describe_scheduled_actions(client, module):
             ScheduledActionNames=[module.params.get('scheduled_action_name')]
         )
         q(actions['ScheduledUpdateGroupActions'][0])
-    except botocore.exceptions.ClientError as e:
+    except (botocore.exceptions.ClientError) as e:
         pass
     return actions
 
@@ -123,7 +123,7 @@ def put_scheduled_update_group_action(client, module):
 
     try:
         return changed, client.put_scheduled_update_group_action(**params)
-    except botocore.exceptions.ClientError as e:
+    except (botocore.exceptions.ClientError) as e:
         module.fail_json(msg=str(e))
 
 
@@ -150,15 +150,20 @@ def main():
 
     try:
         region, ec2_url, aws_connect_kwargs = get_aws_connection_info(module, boto3=True)
-        client = boto3_conn(module, conn_type='client', resource='autoscaling', region=region, endpoint=ec2_url, **aws_connect_kwargs)       
-    except botocore.exceptions.NoCredentialsError, e:
+        client = boto3_conn(module,
+                            conn_type='client',
+                            resource='autoscaling',
+                            region=region,
+                            endpoint=ec2_url,
+                            **aws_connect_kwargs)
+    except (botocore.exceptions.NoCredentialsError)as e:
         module.fail_json(msg="Can't authorize connection - " + str(e))
 
     if state == 'present':
         (changed, results) = put_scheduled_update_group_action(client, module)
         module.exit_json(changed=changed, results=results)
     else:
-        (changed, results) = delete_scheduled_action(state, client, module)
+        (changed, results) = delete_scheduled_action(client, module)
         module.exit_json(changed=changed, results=results)
 
 
