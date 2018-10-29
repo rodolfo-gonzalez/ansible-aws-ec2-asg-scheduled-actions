@@ -117,8 +117,8 @@ def describe_scheduled_actions(client, module):
 def put_scheduled_update_group_action(client, module):
     changed = False
     params = format_request(module)
-    q(params)
-    q("                       ")
+    #q(params)
+    #q("                       ")
     exists = describe_scheduled_actions(client, module)
 
     try:
