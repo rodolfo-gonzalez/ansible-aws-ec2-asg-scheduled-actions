@@ -74,7 +74,7 @@ except ImportError:
 from dateutil.tz import tzutc
 import datetime
 
-import q
+#import q
 
 
 def format_request(module):
@@ -108,7 +108,7 @@ def describe_scheduled_actions(client, module):
             AutoScalingGroupName=module.params.get('autoscaling_group_name'),
             ScheduledActionNames=[module.params.get('scheduled_action_name')]
         )
-        q(actions['ScheduledUpdateGroupActions'][0])
+        #q(actions['ScheduledUpdateGroupActions'][0])
     except (botocore.exceptions.ClientError) as e:
         pass
     return actions
