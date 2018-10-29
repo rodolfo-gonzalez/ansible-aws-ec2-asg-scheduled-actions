@@ -143,7 +143,7 @@ def main():
     )
     module = AnsibleModule(argument_spec=argument_spec)
     state = module.params.get('state').lower()
-    q(state)
+    #q(state)
 
     if not HAS_BOTO3:
         module.fail_json(msg='json and boto3 are required.')
