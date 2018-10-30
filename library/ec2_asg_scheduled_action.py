@@ -132,11 +132,11 @@ def main():
     argument_spec.update(dict(
         autoscaling_group_name=dict(default=None),
         scheduled_action_name=dict(default=None),
-        start_time=dict(default=None),
-        end_time=dict(default=None),
+        #start_time=dict(default=None),
+        #end_time=dict(default=None),
         recurrence=dict(default=None),
-        min_size=dict(default=None, type='int'),
-        max_size=dict(default=None, type='int'),
+        #min_size=dict(default=None, type='int'),
+        #max_size=dict(default=None, type='int'),
         desired_capacity=dict(default=None, type='int'),
         state=dict(default='present', choices=['present', 'absent'])
         )
