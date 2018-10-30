@@ -78,6 +78,7 @@ import datetime
 
 
 def format_request(module):
+    #TODO set required params
     request = dict()
     request['AutoScalingGroupName'] = module.params.get('autoscaling_group_name')
     request['ScheduledActionName'] = module.params.get('scheduled_action_name')
