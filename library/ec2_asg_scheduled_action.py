@@ -81,11 +81,11 @@ def format_request(module):
     request = dict()
     request['AutoScalingGroupName'] = module.params.get('autoscaling_group_name')
     request['ScheduledActionName'] = module.params.get('scheduled_action_name')
-    request['StartTime'] = module.params.get('start_time')
-    request['EndTime'] = module.params.get('end_time')
+    #request['StartTime'] = module.params.get('start_time')
+    #request['EndTime'] = module.params.get('end_time')
     request['Recurrence'] = module.params.get('recurrence')
-    request['MinSize'] = module.params.get('min_size')
-    request['MaxSize'] = module.params.get('max_size')
+    #request['MinSize'] = module.params.get('min_size')
+    #request['MaxSize'] = module.params.get('max_size')
     request['DesiredCapacity'] = module.params.get('desired_capacity')
     return request
 
